@@ -1,0 +1,110 @@
+In [1]: response
+Out[1]: <200 https://quotes.toscrape.com/>
+
+In [2]: response.css("title")
+Out[2]: [<Selector xpath='descendant-or-self::title' data='<title>Quotes to Scrape</title>'>]
+
+In [3]: response.css("title").extract()
+Out[3]: ['<title>Quotes to Scrape</title>']
+
+In [4]: response.css("title::text").extract()
+Out[4]: ['Quotes to Scrape']
+
+In [6]: response.xpath("//title").extract
+Out[6]: <bound method SelectorList.getall of [<Selector xpath='//title' data='<title>Quotes to Scrape</title>'>]>
+
+In [7]: response.xpath("//title").extract()
+Out[7]: ['<title>Quotes to Scrape</title>']
+
+In [8]: response.xpath("//title/text()").extract()
+Out[8]: ['Quotes to Scrape']
+
+
+In [10]: response.xpath("//span[@class='text']/text()").extract()
+Out[10]: 
+['“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”',
+ '“It is our choices, Harry, that show what we truly are, far more than our abilities.”',
+ '“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”',   
+ '“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”',
+ "“Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.”",
+ '“Try not to become a man of success. Rather become a man of value.”',
+ '“It is better to be hated for what you are than to be loved for what you are not.”',
+ "“I have not failed. I've just found 10,000 ways that won't work.”",
+ "“A woman is like a tea bag; you never know how strong it is until it's in hot water.”",
+ '“A day without sunshine is like, you know, night.”']
+
+In [11]: response.css("li.next").extract()
+Out[11]: ['<li class="next">\n                <a href="/page/2/">Next <span aria-hidden="true">→</span></a>\n            </li>']
+
+In [12]: response.css("li.next::text").extract()
+Out[12]: ['\n                ', '\n            ']
+
+In [13]: response.css("li.next a").extract()
+Out[13]: ['<a href="/page/2/">Next <span aria-hidden="true">→</span></a>']
+
+In [14]: response.css("li.next a::text").extract()
+Out[14]: ['Next ']
+
+
+In [16]: response.css("li.next a").xpath("@href").extract()
+Out[16]: ['/page/2/']
+
+In [17]: response.css("a").xpath("@href").extract()
+Out[17]: 
+['/',
+ '/login',
+ '/author/Albert-Einstein',
+ '/tag/change/page/1/',
+ '/tag/deep-thoughts/page/1/',
+ '/tag/thinking/page/1/',
+ '/tag/world/page/1/',
+ '/author/J-K-Rowling',
+ '/tag/abilities/page/1/',
+ '/tag/choices/page/1/',
+ '/author/Albert-Einstein',
+ '/tag/inspirational/page/1/',
+ '/tag/life/page/1/',
+ '/tag/live/page/1/',
+ '/tag/miracle/page/1/',
+ '/tag/miracles/page/1/',
+ '/author/Jane-Austen',
+ '/tag/aliteracy/page/1/',
+ '/tag/books/page/1/',
+ '/tag/classic/page/1/',
+ '/tag/humor/page/1/',
+ '/author/Marilyn-Monroe',
+ '/tag/be-yourself/page/1/',
+ '/tag/inspirational/page/1/',
+ '/author/Albert-Einstein',
+ '/tag/adulthood/page/1/',
+ '/tag/success/page/1/',
+ '/tag/value/page/1/',
+ '/author/Andre-Gide',
+ '/tag/life/page/1/',
+ '/tag/love/page/1/',
+ '/author/Thomas-A-Edison',
+ '/tag/edison/page/1/',
+ '/tag/failure/page/1/',
+ '/tag/inspirational/page/1/',
+ '/tag/paraphrased/page/1/',
+ '/author/Eleanor-Roosevelt',
+ '/tag/misattributed-eleanor-roosevelt/page/1/',
+ '/author/Steve-Martin',
+ '/tag/humor/page/1/',
+ '/tag/obvious/page/1/',
+ '/tag/simile/page/1/',
+ '/page/2/',
+ '/tag/love/',
+ '/tag/inspirational/',
+ '/tag/life/',
+ '/tag/humor/',
+ '/tag/books/',
+ '/tag/reading/',
+ '/tag/friendship/',
+ '/tag/friends/',
+ '/tag/truth/',
+ '/tag/simile/',
+ 'https://www.goodreads.com/quotes',
+ 'https://scrapinghub.com']
+
+In [18]: 
