@@ -17,9 +17,14 @@ from itemadapter import ItemAdapter
 class TutorialPipeline:
     def __init__(self):
         self.connection()
+        
         self.create()
     def connection(self):
         self.conn=sqlite3.connect("new.db") 
+#       for mysql
+#       self.cnx = mysql.connector.connect(user='scott', password='password',
+#                               host='127.0.0.1',
+#                               database='employees')
         self.curs=self.conn.cursor()
     def create(self):
         self.curs.execute(""" DROP TABLE IF EXISTS quotes_table """)
@@ -33,7 +38,7 @@ class TutorialPipeline:
         self.store(item)
         return item
     def store(self,item):
-        self.curs.execute( """insert into quotes_table values(?,?,?)""",(
+        self.curs.execute( """insert into quotes_table values(?,?,?)""",(# """insert into quotes_table values(%s,%s,%s)"""
             item["author"][0],
             item["text"][0],
             item["tag"][0]
